@@ -1,0 +1,10 @@
+<launch>
+
+  <node name="beacon_interface" pkg="turtle_ekf" type="blob_dist_interface" >
+  </node>
+
+  <node name="triangulation" pkg="turtle_ekf" type="triangulation_optimization" >
+    <param name="scaling" type="double" value="0.95" />
+  </node>
+
+</launch>

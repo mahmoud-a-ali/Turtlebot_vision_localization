@@ -1,0 +1,7 @@
+<launch>
+
+    <node name="occam_img" pkg="turtle_ekf" type="interactive_color_segment">
+        <remap from="/image" to="/occam/image0"/>
+    </node>
+
+</launch>

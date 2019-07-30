@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<launch>
+
+  <include file="$(find turtle_ekf)/launch/rectify.launch">
+  </include>
+
+  <!--node name="usb_cam" pkg="usb_cam" type="usb_cam_node" output="screen" >
+    <param name="video_device" value="/dev/video0" />
+    <param name="image_width" value="640" />
+    <param name="image_height" value="480" />
+    <param name="pixel_format" value="yuyv" />
+    <param name="camera_frame_id" value="usb_cam" />
+    <param name="io_method" value="mmap"/>
+  </node-->
+
+  <!--node name="color_segment" pkg="turtle_ekf" type="interactive_color_segment">
+    <remap from="/image" to="/usb_cam/image_raw"/>
+  </node-->
+
+  <!--node name="blob_detector" pkg="turtle_ekf" type="blob_detector">
+    <remap from="/image" to="/usb_cam/image_raw"/>
+  </node-->
+
+  <group ns="blue">
+    <node name="blue_blob_detector" pkg="turtle_ekf" type="blob_detector_v2">  
+      <remap from="image" to="/image_tiles"/>
+      <param name="HMin" type="int" value="104" />
+    <param name="HMax" type="int" value="114" />
+    <param name="SMin" type="int" value="119" />
+    <param name="SMax" type="int" value="251" />
+    <param name="VMin" type="int" value="39" />
+    <param name="VMax" type="int" value="249" />
+    </node>
+  </group>
+
+  <group ns="red">
+    <node name="red_blob_detector" pkg="turtle_ekf" type="blob_detector_v2">
+      <remap from="image" to="/image_tiles"/>
+      <param name="invert" type="bool" value="true" />
+      <param name="HMin" type="int" value="93" />
+      <param name="HMax" type="int" value="107" />
+      <param name="SMin" type="int" value="113" />
+      <param name="SMax" type="int" value="255" />
+      <param name="VMin" type="int" value="142" />
+      <param name="VMax" type="int" value="255" />
+    </node>
+  </group>
+
+  <group ns="green">
+    <node name="green_blob_detector" pkg="turtle_ekf" type="blob_detector_v2">
+      <remap from="image" to="/image_tiles"/>
+        <param name="HMin" type="int" value="24" />
+    <param name="HMax" type="int" value="88" />
+    <param name="SMin" type="int" value="82" />
+    <param name="SMax" type="int" value="162" />
+    <param name="VMin" type="int" value="55" />
+    <param name="VMax" type="int" value="251" />
+    </node>
+  </group>
+
+
+    <node name="beacon_dist" pkg="turtle_ekf" type="blob_dist_interface">
+    </node>
+    <node name="odom_interface" pkg="turtle_ekf" type="odom_interface">
+    </node>
+
+</launch>

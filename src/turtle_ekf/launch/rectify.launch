@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<launch>
+    
+  <group ns="camera0">
+    <node name="rectifier_node" pkg="turtle_ekf" type="image_rectifier">
+      <param name="queue_size" type="int" value="200" />
+    </node>
+  </group>
+
+  <group ns="camera1">
+    <node name="rectifier_node" pkg="turtle_ekf" type="image_rectifier">
+      <param name="queue_size" type="int" value="200" />
+    </node>
+  </group>
+
+  <group ns="camera2">
+    <node name="rectifier_node" pkg="turtle_ekf" type="image_rectifier">
+      <param name="queue_size" type="int" value="200" />
+    </node>
+  </group>
+
+  <group ns="camera3">
+    <node name="rectifier_node" pkg="turtle_ekf" type="image_rectifier">
+      <param name="queue_size" type="int" value="200" />
+    </node>
+  </group>
+
+  <group ns="camera4">
+    <node name="rectifier_node" pkg="turtle_ekf" type="image_rectifier">
+      <param name="queue_size" type="int" value="200" />
+    </node>
+  </group>
+ 
+  <node name="tiles" pkg="turtle_ekf" type="image_tiles">
+  </node>
+    
+</launch>
+

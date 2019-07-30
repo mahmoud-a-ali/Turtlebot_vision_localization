@@ -1,0 +1,23 @@
+<launch>
+	<!-- Comment -->
+	<!--<node pkg="turtle_ekf" type="ekf_one_measurement_node" name="ekf">	
+	</node>-->
+
+  <include file="$(find turtle_ekf)/launch/rectify.launch">
+  </include>
+
+  <node name="color_segment" pkg="turtle_ekf" type="interactive_color_segment">
+    <!--remap from="/image" to="/camera4/image"/-->
+   <!--remap from="/image" to="/occam_driver/stitched_image0"/-->
+  <remap from="image" to="/image_tiles"/> 
+  </node>
+
+  <node name="blob_detector" pkg="turtle_ekf" type="blob_detector">
+     <remap from="image" to="/image_tiles"/>
+  </node>
+<!--
+  <node pkg="turtle_ekf" type="ekf_node" name="ekf">	
+  </node>
+-->
+
+</launch>

@@ -1,0 +1,25 @@
+<launch>
+	<!-- Comment -->
+	<!--<node pkg="turtle_ekf" type="ekf_one_measurement_node" name="ekf">	
+	</node>-->
+<!--
+  <node name="color_segment" pkg="turtle_ekf" type="interactive_color_segment">
+    <remap from="/image" to="/camera4/image"/>
+  </node>
+-->
+  <node name="blob_detector" pkg="turtle_ekf" type="blob_detector">
+        <remap from="/image" to="/occam_driver/image_tiles0"/>
+    <remap from="/beacon_distance" to="/blue_beacon_dist"/> 
+    <param name="HMin" type="int" value="99" />
+    <param name="HMax" type="int" value="118" />
+    <param name="SMin" type="int" value="134" />
+    <param name="SMax" type="int" value="255" />
+    <param name="VMin" type="int" value="13" />
+    <param name="VMax" type="int" value="227" />
+  </node>
+<!--
+  <node pkg="turtle_ekf" type="ekf_node" name="ekf">	
+  </node>
+-->
+
+</launch>

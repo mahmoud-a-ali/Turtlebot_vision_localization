@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<launch>
+roslaunch turtlebot_rviz_launchers view_model.launch
+
+  <!--include file="$(find turtlebot_rviz_launchers)/launch/view_model.launch">
+  </include-->
+
+  <!-- The capture_key node to send radius modification messages to path_publisher -->
+  <node pkg="capture_key" type="capture_key_node" name="capture_key">
+  </node>  
+
+  <group ns="blue">
+    <param name="R" type="double" value="0.0" />
+    <param name="G" type="double" value="0.0" />
+    <param name="B" type="double" value="1.0" />
+    <param name="X" type="double" value="0.0" />
+    <param name="Y" type="double" value="0.0" />
+    <param name="Z" type="double" value="0.5" />
+    <node name="beacon" pkg="turtle_ekf" type="beacon_visualizer">
+    </node>
+    <node name="real_circle" pkg="turtle_ekf" type="circle_visualizer">
+    </node>
+  </group>
+
+  <group ns="red">
+    <param name="R" type="double" value="1.0" />
+    <param name="G" type="double" value="0.0" />
+    <param name="B" type="double" value="0.0" />
+    <param name="X" type="double" value="0.0" />
+    <param name="Y" type="double" value="5.2" />
+    <param name="Z" type="double" value="0.5" />
+    <node name="beacon" pkg="turtle_ekf" type="beacon_visualizer">
+    </node>
+    <node name="real_circle" pkg="turtle_ekf" type="circle_visualizer">
+    </node>
+  </group>
+
+  <group ns="green">
+    <param name="R" type="double" value="0.0" />
+    <param name="G" type="double" value="1.0" />
+    <param name="B" type="double" value="0.0" />
+    <param name="X" type="double" value="4.4" />
+    <param name="Y" type="double" value="3.2" />
+    <param name="Z" type="double" value="0.5" />
+    <node name="beacon" pkg="turtle_ekf" type="beacon_visualizer">
+    </node>
+    <node name="real_circle" pkg="turtle_ekf" type="circle_visualizer">
+    </node>
+  </group>
+
+  <node name="odom_path" pkg="turtle_ekf" type="path_visualizer">
+    <remap from="pose" to="odom2D" />
+    <remap from="visu_path" to="odom_path" />
+    <param name="R" type="double" value="1.0" />
+    <param name="G" type="double" value="1.0" />
+    <param name="B" type="double" value="0.5" />
+  </node>
+
+  <node pkg="turtle_ekf" type="my_static_transform_publisher" name="my_tf" args="/map /base_footprint">
+    <remap from="robot_pose" to="odom2D"/>
+  </node>
+
+  <node name="ekf_path" pkg="turtle_ekf" type="path_visualizer">
+    <remap from="pose" to="robot_pose_ekf" />
+    <remap from="visu_path" to="ekf_path" />
+    <param name="R" type="double" value="1.0" />
+    <param name="G" type="double" value="1.0" />
+    <param name="B" type="double" value="1.0" />
+  </node>
+
+</launch>
+

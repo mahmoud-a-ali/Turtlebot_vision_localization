@@ -1,0 +1,75 @@
+<launch>
+  
+  <param name="Focal" type="double" value="475.555" />
+  <remap from="/image" to="/occam_driver/stitched_image0"/>
+  
+
+  <node name="dist_interface" pkg="turtle_ekf" type="blob_dist_interface">
+  </node>
+
+
+  <node name="blue_blob_detector" pkg="turtle_ekf" type="blob_detector_v2">
+
+    <remap from="/beacon_distance" to="/blue_beacon_dist"/> 
+    <param name="HMin" type="int" value="91" />
+    <param name="HMax" type="int" value="124" />
+    <param name="SMin" type="int" value="119" />
+    <param name="SMax" type="int" value="251" />
+    <param name="VMin" type="int" value="36" />
+    <param name="VMax" type="int" value="235" />
+  </node>
+
+
+  <node name="green_blob_detector" pkg="turtle_ekf" type="blob_detector_v2">
+
+    <remap from="/beacon_distance" to="/green_beacon_dist"/> 
+    <param name="HMin" type="int" value="34" />
+    <param name="HMax" type="int" value="107" />
+    <param name="SMin" type="int" value="106" />
+    <param name="SMax" type="int" value="191" />
+    <param name="VMin" type="int" value="0" />
+    <param name="VMax" type="int" value="191" />
+  </node>
+
+  <node name="red_blob_detector" pkg="turtle_ekf" type="blob_detector_v2">
+
+    <remap from="/beacon_distance" to="/red_beacon_dist"/> 
+    <param name="invert" type="bool" value="true" />
+    <param name="HMin" type="int" value="82" />
+    <param name="HMax" type="int" value="104" />
+    <param name="SMin" type="int" value="35" />
+    <param name="SMax" type="int" value="159" />
+    <param name="VMin" type="int" value="137" />
+    <param name="VMax" type="int" value="255" />
+  </node>
+<!--
+// Filter by Color
+    params.filterByColor = true;
+    params.blobColor = 255;
+
+    // Change thresholds
+    params.thresholdStep = 60;
+    params.minThreshold = 20;
+    params.maxThreshold = 200;
+
+    // Filter by Area.
+    params.filterByArea = true;
+    params.minArea = 300;
+    params.maxArea = 160000;
+
+    // Filter by Circularity
+    params.filterByCircularity = true;
+    params.minCircularity = 0.7;
+
+    // Filter by Convexity
+    params.filterByConvexity = true;
+    params.minConvexity = 0.8;
+
+    // Filter by Inertia
+    params.filterByInertia = true;
+    params.minInertiaRatio = 0.5;
+-->
+
+</launch>
+
+

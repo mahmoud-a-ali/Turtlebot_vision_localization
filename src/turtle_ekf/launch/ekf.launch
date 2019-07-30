@@ -1,0 +1,19 @@
+<launch>
+	<!-- Comment -->
+	<node pkg="turtle_ekf" type="ekf_node" name="ekf">	
+	</node>
+
+  <node name="odom_interface" pkg="turtle_ekf" type="odom_interface">
+    
+   <remap from="/image" to="/occam_driver/stitched_image0"/> 
+  </node>
+
+  <node name="blob_detector" pkg="turtle_ekf" type="blob_detector">
+    <remap from="/image" to="/occam_driver/stitched_image0"/>
+  </node>
+<!--
+  <node pkg="turtle_ekf" type="ekf_node" name="ekf">	
+  </node>
+-->
+
+</launch>
