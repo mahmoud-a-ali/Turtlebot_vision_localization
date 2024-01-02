@@ -6,8 +6,10 @@ A Ros-based package for robot localization using Vision.
 
 In this project, we implemented different localization methods for Turtlebot using a 360° Occam camera by placing some landmarks in the environment.
 We were able to localize the robot – considering both absolute and hybrid localization (Extended Kalman Filter). 
-More information can be found in the [PDF report](Presentation_ALI_Serrano.pdf).
-
+More information can be found in the [PDF report](Presentation_ALI_Serrano.pdf).\
+**Videos**:
+- [Absolute localization using vision - Trilteration]
+- [Hybrid localization using vision - Extended Kalman Filter]
 
 ## Software
 * ROS kinetic
@@ -89,4 +91,6 @@ ___
 * Publishes to
   * `robot_pose_ekf`: 2D pose estimation
   
-  [Omni 60]: https://occamvisiongroup.com/product/omni-60-omnidirectional-camera/
+[Omni 60]: https://occamvisiongroup.com/product/omni-60-omnidirectional-camera/
+[Absolute localization using vision - Trilteration]: https://www.youtube.com/watch?v=B_m1dbH83YE&ab_channel=mahmoudali
+[Hybrid localization using vision - Extended Kalman Filter]: https://www.youtube.com/watch?v=or9CyOQA0jg&ab_channel=mahmoudali 
