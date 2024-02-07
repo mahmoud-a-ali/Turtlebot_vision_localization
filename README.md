@@ -6,7 +6,7 @@ A Ros-based package for robot localization using Vision.
 
 In this project, we implemented different localization methods for Turtlebot using a 360° Occam camera by placing some landmarks in the environment.
 We were able to localize the robot – considering both absolute and hybrid localization (Extended Kalman Filter). 
-More information can be found in the [PDF report](Presentation_ALI_Serrano.pdf).\
+More information can be found in the [PDF report](Report_ALI_Serrano_2017.pdf).\
 **Videos**:
 - [Absolute localization using vision - Trilteration]
 - [Hybrid localization using vision - Extended Kalman Filter]
